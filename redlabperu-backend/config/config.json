@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "tefa0408",
+    "database": "redlab_v5",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port":5433
+    
+  },
+  "c9development": {
+    "username": "ubuntu",
+    "password": "12345",
+    "database": "redlab",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "admin",
+    "password": "redlab",
+    "database": "sl_redlab",
+    "host": "localhost",
+    "dialect": "postgres",
+    "logging": false
+  }
+}

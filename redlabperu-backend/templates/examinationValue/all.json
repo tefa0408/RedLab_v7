@@ -1,0 +1,14 @@
+{
+  "status": true,
+  "data": {
+    "{{#each data}}": {
+      "id": "{{#? this.id}}",
+      "name": "{{#? this.name}}",
+      "countVR": "{{#? this.countVR}}",
+      "status": "{{#? this.status}}",
+      "ExaminationGroupId": "{{#? this.ExaminationGroupId}}",
+      "MethodId": "{{#? this.MethodId}}",
+      "UnitId" : "{{#? this.UnitId }}"
+    }
+  }
+}
