@@ -173,7 +173,8 @@ class PatientsTable extends Component {
                 </Tooltip>
                  <Tooltip title="Editar">
                     <Button size="small" color="primary" onClick={() => this.handleClickEdit(item)}>
-                        <FiEdit2 />
+                    
+                       <FiEdit2 />
                     </Button>
                 </Tooltip>
                 {actions && actions.canDelete && (

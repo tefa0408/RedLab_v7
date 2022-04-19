@@ -26,6 +26,9 @@ import DialogPrintExams from "../patientExamination/DialogPrintExams";
 import DialogPrintAppointment from "./DialogPrintAppointment";
 import NumberFormat from "react-number-format";
 import { FiEdit2 } from "react-icons/fi";
+import { BsPrinter } from "react-icons/bs";
+import { TiDeleteOutline } from "react-icons/ti";
+
 import _ from "@lodash";
 
 import { BrowserView, MobileView, isMobile } from "react-device-detect";
@@ -247,7 +250,7 @@ class AppointmentsTable extends Component {
               color="primary"
               onClick={() => this.handleEditAppointment(item)}
             >
-              Editar
+              <FiEdit2/>
             </Button>
           </Tooltip>
           <Tooltip title="Imprimir">
@@ -256,7 +259,7 @@ class AppointmentsTable extends Component {
               color="primary"
               onClick={() => this.handleClickPrint(item)}
             >
-              Imprimir
+              <BsPrinter/>
             </Button>
           </Tooltip>
           {actions &&
@@ -267,7 +270,7 @@ class AppointmentsTable extends Component {
                   onClick={() => this.handleDeleteAppointment(item)}
                   color="primary"
                 >
-                  Eliminar
+                  <TiDeleteOutline style={{color:"red"}}/>
                 </Button>
               </Tooltip>
             )}

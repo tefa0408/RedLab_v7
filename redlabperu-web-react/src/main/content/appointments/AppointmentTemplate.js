@@ -107,7 +107,6 @@ const styles = (theme) => ({
 class AppointmentTemplate extends React.Component {
   state = {
     appointment: this.props.appointment,
-
     loading: true,
   };
   handleClose = () => {
@@ -125,6 +124,15 @@ class AppointmentTemplate extends React.Component {
   };
 
 
+  setAge = (e) => {
+
+    if(e > 130 || e == 0) {
+      return '-'
+    }
+
+    return e + ' años '
+  };
+
   setGender = (e) => {
 
     if(e == 'M' || e == 'm') {
@@ -137,7 +145,7 @@ class AppointmentTemplate extends React.Component {
   render() {
     const { classes } = this.props;
     const { appointment = {} } = this.state;
-    console.log(appointment.digitalSignatureUrl);
+    {/*console.log(appointment.digitalSignatureUrl);*/}
     const exams = mergeExaminations(appointment.services);
     return (
       <div id="print">
@@ -175,7 +183,7 @@ class AppointmentTemplate extends React.Component {
                     </div>
                     <div>
                       <b>Edad: </b>
-                      {appointment.client.years} {"años"}
+                      {this.setAge(appointment.client.years)} 
                     </div>
                     
                     <div>
@@ -186,6 +194,11 @@ class AppointmentTemplate extends React.Component {
                     <div>
                       <b>Sexo: </b>
                       {this.setGender(appointment.client.gender)}
+                    </div>
+
+                    <div>
+                      <b>Código: </b>
+                      {appointment.code}
                     </div>
                   </div>
                 </Grid>
@@ -316,7 +329,7 @@ class AppointmentTemplate extends React.Component {
                               <b>{data.result}</b>
                             </td>
                             <td className={classes.td3}>{this.formatValues(data.unit)}</td>
-                            <td className={classes.td3} style={{fontSize: "7px"}}>
+                            <td className={classes.td3} style={{fontSize: "7px", alignContent:"left"}}>
                               {data.refValue.split(/\r?\n/g).map((val) => (
                                 <>
                                   {val}
