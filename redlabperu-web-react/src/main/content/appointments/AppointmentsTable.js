@@ -25,6 +25,7 @@ import DialogAppointment from "./DialogAppointment";
 import DialogPrintExams from "../patientExamination/DialogPrintExams";
 import DialogPrintAppointment from "./DialogPrintAppointment";
 import NumberFormat from "react-number-format";
+import { FiEdit2 } from "react-icons/fi";
 import _ from "@lodash";
 
 import { BrowserView, MobileView, isMobile } from "react-device-detect";
@@ -221,7 +222,7 @@ class AppointmentsTable extends Component {
               color="primary"
               onClick={() => this.handleAttendAppointment(item)}
             >
-              {appointmentStatus === "E" ? "Editar" : "Asignar resultados"}
+              {appointmentStatus === "E" ? <FiEdit2 title="Editar"/> : "Asignar resultados"}
             </Button>
           </Tooltip>
           {appointmentStatus === "E" && (
@@ -231,7 +232,7 @@ class AppointmentsTable extends Component {
                 color="primary"
                 onClick={() => this.handleClickPrintAppointment(item)}
               >
-                Ver resultados
+                Ver Resultados
               </Button>
             </Tooltip>
           )}

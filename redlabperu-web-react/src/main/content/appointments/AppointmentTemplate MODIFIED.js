@@ -186,10 +186,10 @@ class AppointmentTemplate extends React.Component {
                       {appointment.code}
                     </div>
 
-                    <div>
+                    {/*<div>
                       <b> Cod_refe: </b>
                       {}
-                    </div>
+                  </div>*/}
                     <div>
                       <b>Fecha: </b>
                       {appointment.dateAppointmentEU}
@@ -302,7 +302,7 @@ class AppointmentTemplate extends React.Component {
                               <b>{data.result}</b>
                             </td>
                             <td className={classes.td3}>{this.formatValues(data.unit)}</td>
-                            <td className={classes.td3}>
+                            <td className={classes.td3} style={{fontSize: "7px"}}>
                               {data.refValue.split(/\r?\n/g).map((val) => (
                                 <>
                                   {val}

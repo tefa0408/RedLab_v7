@@ -164,19 +164,18 @@ class AppointmentTemplate extends React.Component {
               <Grid
                 container
                 className={classes.info}
-                style={{ width: "100%", marginTop: "10px" }}
+                style={{ width: "100%", marginTop: "5px" }}
                 justify="center"
               >
-                <Grid item xs={6} justify="center">
+                <Grid item xs={9} justify="center">
                   <div>
                     <div>
                       <b>Paciente: </b>
-                      {appointment.client.name} {appointment.client.lastNameP}{" "}
-                      {appointment.client.lastNameM}
+                      {appointment.client.name} {appointment.client.lastNameP} {appointment.client.lastNameM}
                     </div>
                     <div>
                       <b>Edad: </b>
-                      {appointment.client.years}
+                      {appointment.client.years} {"años"}
                     </div>
                     
                     <div>
@@ -190,20 +189,25 @@ class AppointmentTemplate extends React.Component {
                     </div>
                   </div>
                 </Grid>
-                <Grid item xs={6} justify="right">
+                <Grid item xs={3} justify="right">
                   <div
                     style={{
                       float: "right",
                     }}
                   >
                       <div>
+                        <b>Medico: </b>
+                        {appointment.Referer.name}
+                      </div>
+
+                      <div>
                         <b>Fecha: </b>
                         {appointment.dateAppointmentEU}
                       </div>
-                    <div>
+                    {/*<div>
                       <b> Código Ref.: </b>
                       {appointment.refererCode}
-                    </div>
+                  </div>*/}
 
                     <div>
                       <b>Pagina: </b>
@@ -312,7 +316,7 @@ class AppointmentTemplate extends React.Component {
                               <b>{data.result}</b>
                             </td>
                             <td className={classes.td3}>{this.formatValues(data.unit)}</td>
-                            <td className={classes.td3}>
+                            <td className={classes.td3} style={{fontSize: "7px"}}>
                               {data.refValue.split(/\r?\n/g).map((val) => (
                                 <>
                                   {val}
