@@ -250,7 +250,7 @@ class AppointmentsTable extends Component {
               color="primary"
               onClick={() => this.handleEditAppointment(item)}
             >
-              <FiEdit2/>
+              <FiEdit2 style={{ height: "15%",width: "35%",}}/>
             </Button>
           </Tooltip>
           <Tooltip title="Imprimir">
@@ -259,7 +259,7 @@ class AppointmentsTable extends Component {
               color="primary"
               onClick={() => this.handleClickPrint(item)}
             >
-              <BsPrinter/>
+              <BsPrinter style={{ height: "15%",width: "35%",}}/>
             </Button>
           </Tooltip>
           {actions &&
@@ -270,7 +270,7 @@ class AppointmentsTable extends Component {
                   onClick={() => this.handleDeleteAppointment(item)}
                   color="primary"
                 >
-                  <TiDeleteOutline style={{color:"red"}}/>
+                  <TiDeleteOutline style={{color: "red", height: "15%",width: "40%",}}/>
                 </Button>
               </Tooltip>
             )}
