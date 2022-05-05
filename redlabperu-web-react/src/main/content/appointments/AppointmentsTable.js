@@ -361,6 +361,7 @@ class AppointmentsTable extends Component {
                 const isSelected = this.isSelected(n.id);
                 return (
                   console.log(n),
+                  
                   <TableRow
                     className="h-64 cursor-pointer"
                     hover

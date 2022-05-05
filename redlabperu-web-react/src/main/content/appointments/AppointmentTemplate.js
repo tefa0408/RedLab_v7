@@ -145,6 +145,9 @@ class AppointmentTemplate extends React.Component {
   render() {
     const { classes } = this.props;
     const { appointment = {} } = this.state;
+    console.log("entre")
+    console.log(appointment)
+    console.log("esto")
     {/*console.log(appointment.digitalSignatureUrl);*/}
     const exams = mergeExaminations(appointment.services);
     return (

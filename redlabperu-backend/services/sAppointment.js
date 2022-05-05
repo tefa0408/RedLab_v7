@@ -12,6 +12,7 @@ async function getAppointmentAll(offset, limit, query = {}) {
       { model: models.PriceList },
       { model: models.Headquarter },
       { model: models.Referers, as: "Referer"},
+      { model: models.Doctors, as: "Doctor"},
     ],
     order: [["id", "asc"]],
     offset,
@@ -40,6 +41,10 @@ async function getAppointmentsByReferer(query) {
     where = {RefererId: query.refererId, status: query.status};
   }
 
+  if(query.doctorId){
+    where = {DoctorId: query.doctorId, status: query.status};
+  }
+
   const { count: total, rows } = await models.Appointment.findAndCountAll({
     where,
     include: [
@@ -47,6 +52,7 @@ async function getAppointmentsByReferer(query) {
       { model: models.PriceList },
       { model: models.Headquarter },
       { model: models.Referers, as: "Referer"},
+      { model: models.Doctors, as: "Doctor"},
     ],
     order: [["id", "asc"]],
     distinct: true,
@@ -76,6 +82,7 @@ async function getAppointmentsByPacient(query) {
       { model: models.PriceList },
       { model: models.Headquarter },
       { model: models.Referers, as: "Referer"},
+      { model: models.Doctors, as: "Doctor"},
     ],
     order: [["id", "asc"]],
     distinct: true,
@@ -108,6 +115,7 @@ async function getAppointmentsByDates(query) {
       { model: models.PriceList },
       { model: models.Headquarter },
       { model: models.Referers, as: "Referer"},
+      { model: models.Doctors, as: "Doctor"},
     ],
     order: [["id", "asc"]],
     distinct: true,

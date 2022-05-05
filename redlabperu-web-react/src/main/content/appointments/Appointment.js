@@ -4,7 +4,7 @@ Nuevas Citas
 ------------------------------------------
 */ 
 
-import React, { Component } from "react";
+import React, { Component, useState,useEffect} from "react";
 import {
   Button,
   Tab,
@@ -31,13 +31,16 @@ import { showMessage, fetch_end, fetch_start } from "store/actions/fuse";
 import { hasEmptyField, mergeExaminations } from "Utils";
 import {
   addRefererApi,
+  addDoctorApi,
   getRefererApi,
+  getDoctorApi,
   getAgreementsAllApi,
   getPatienByDOCApi,
   getPatientByNameApi,
   getAppointmentsResultsApi,
   getHeadquartersAllApi,
   getAgreementsListPriceApi,
+  addAppointmentApi,
 } from "../../../api";
 import DialogConfirm from "../global/DialogConfirm";
 import DialogAddExaminations from "./DialogAddExaminations";
@@ -86,6 +89,13 @@ const fieldsNewReferer = [
   },
 ];
 
+const fieldsNewDoctor = [
+  {
+    name: "doctorName",
+    label: "Nombre del Médico",
+  },
+];
+
 
 //valueCriteria =
 class Appointment extends Component {
@@ -99,17 +109,19 @@ class Appointment extends Component {
     showPatientsButton: false,
     showPatientSearchBox: true,
     openRefererDialog: false,
+    openDoctorDialog: false,
     patientSearch: true,
     disabledSelects: true,
     totalPrice: "",
     discount: 0,
     finalPrice: "",
+    doctorName: "",
     patientDoc: "",
     patientCriteria: "dni",
     refererName: "",
     patient: patientInitialState,
     referer: [],
-    doctors: [],
+    doctor: [],
     agreements: [],
     exams: [],
     selectedExams: [],
@@ -117,7 +129,7 @@ class Appointment extends Component {
     headquarters: [],
     priceLists: [],
   };
-
+  
   
 
   componentDidMount() {
@@ -141,6 +153,7 @@ class Appointment extends Component {
     this.fetchAgreements();
     this.fetchHeadquarters();
     this.fetchReferer();
+    this.fetchDoctor();
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -182,6 +195,26 @@ class Appointment extends Component {
       .then(
         (response) => {
           if (response.status) this.setState({ referer: response.data });
+        },
+        (err) => {
+          console.log(err);
+          showMessage({
+            message: "Error de conexión. Recargue por favor.",
+            variant: "error",
+          });
+        }
+      )
+      .finally(fetch_end);
+  };
+
+  fetchDoctor =  () => {
+    const { showMessage, fetch_end, fetch_start } = this.props;
+    fetch_start();
+    getDoctorApi()
+      .then(
+        (response) => {
+          if (response.status) this.setState({ doctor: response.data });
+          console.log(response)
         },
         (err) => {
           console.log(err);
@@ -275,6 +308,17 @@ class Appointment extends Component {
     this.setState({ openPatientsDialog: false});
   };
 
+  openDialogDoctor = () => {
+    this.setState({openDoctorDialog: true});
+  };
+
+  closeDialogDoctor = (response) => {
+    this.setState({ openDoctorDialog: false});
+    if (response)
+      //Si se añade una nueva referencia, se actualiza la lista de doctors.
+      this.fetchDoctor();
+  };
+
   openDialogReferer = () => {
     this.setState({ openRefererDialog: true});
   };
@@ -301,10 +345,10 @@ class Appointment extends Component {
     this.fetchPriceLists(event.target.value);
   };
 
-  handleChangeReferer = (event) => {
+  /*handleChangeReferer = (event) => {
 
     this.setState({ appointmentReferer: event.target.value});
-  };
+  };*/
 
   handleChange = (event) => {
     this.setState({
@@ -328,8 +372,6 @@ class Appointment extends Component {
       this.setState({ showPatientsButton: false});
       this.setState({showPatientSearchBox: true});
     }
-
-   
     //console.log(event.target.value);
   };
 
@@ -431,10 +473,6 @@ class Appointment extends Component {
           .finally(fetch_end);
       }
 
-   
-    
-
-
   };
 
   handleKeyPress = (event) => {
@@ -480,7 +518,6 @@ class Appointment extends Component {
 
         let index = selectedExams.indexOf(exam);
         selectedExams.splice(index, 1);
-        
       }
     }
 
@@ -539,11 +576,13 @@ class Appointment extends Component {
       dateAppointment: form.dateAppointment,
       time: form.time,
       RefererId: form.RefererId,
+      DoctorId: form.DoctorId,
       refererCode: form.refererCode,
       examinations: examinations_ids,
       totalPrice,
       discount,
       finalPrice,
+      
     };
 
     if (appointmentId === "new") {
@@ -613,9 +652,12 @@ class Appointment extends Component {
       totalPrice,
       discount,
       finalPrice,
+      doctor,
       priceLists,
     } = this.state;
     const params = this.props.match.params;
+    console.log(referer)
+    console.log(doctor)
 
     return (
       <div style={{ width: "100%" }}>
@@ -922,7 +964,6 @@ class Appointment extends Component {
                           </MenuItem>
                         ))}
                       </TextField>
-
                       <TextField
                         id="standard-select-currency"
                         className="mt-8 mb-16 mr-8 ml-8"
@@ -938,11 +979,8 @@ class Appointment extends Component {
                         disabled={disabled}
                       />
                     </div>
-  
-
- {/*{@RSV01 add doctor and observations of doctor, you
-            have to change this part */}
-
+                        {/*{@RSV01 add doctor and observations of doctor, you
+                          have to change this part */}
                     <div style={{ display: "flex", justifyContent: "center" }}>
                     <TextField
                         id="standard-select-currency"
@@ -963,9 +1001,9 @@ class Appointment extends Component {
                         className="mt-8 mb-16 mr-8 ml-8"
                         select
                         label="Médico que indica"
-                        name="RefererId"
-                        value={form.RefererId || ''}
-                        error={form.RefererId === ""}
+                        name="DoctorId"
+                        value={form.DoctorId || ''}
+                        error={form.DoctorId === ""}
                         required
                         onChange={this.handleChange}
                         helperText="Por favor seleccione uno"
@@ -980,7 +1018,7 @@ class Appointment extends Component {
                           <Button
                             color="primary"
                             onClick={() =>
-                              this.openDialogReferer()
+                              this.openDialogDoctor()
                             }
                             fullWidth
                             variant="contained"
@@ -988,9 +1026,9 @@ class Appointment extends Component {
                             Nuevo Médico
                           </Button>
                         </MenuItem>  
-                        {referer.map((option) => (
+                        {doctor.map((option) => (
                           <MenuItem key={option.id} value={option.id}>
-                            {option.refererName}
+                            {option.doctorName}
                           </MenuItem>
                         ))}
                       </TextField>
@@ -1182,6 +1220,16 @@ class Appointment extends Component {
             fields={fieldsNewReferer}
             title="Agregar nueva referencia"
             onFetchApi={addRefererApi}
+          />
+        )}
+
+        {this.state.openDoctorDialog && (
+          <DialogCreateMaster
+            dialog={this.state.openDoctorDialog}
+            onResponse={this.closeDialogDoctor}
+            fields={fieldsNewDoctor}
+            title="Agregar nuevo médico"
+            onFetchApi={addDoctorApi}
           />
         )}
       </div>

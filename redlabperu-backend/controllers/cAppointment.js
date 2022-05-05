@@ -104,6 +104,7 @@ async function addAppointment(req, res) {
   }
 }
 
+
 async function updateAppointment(req, res) {
   try {
     let id = req.params.id;

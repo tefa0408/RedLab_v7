@@ -6,8 +6,7 @@
     "{{#each data.rows}}": {
       "referer": {
         "id": "{{#? this.Referer.id}}",
-        "refererName": "{{#? this.Referer.refererName}}"
-        
+        "refererName": "{{#? this.Referer.refererName}}" 
       }
 
     }

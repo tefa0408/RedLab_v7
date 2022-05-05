@@ -26,6 +26,7 @@ let rUser = require("./routes/rUser"),
   rProfession = require("./routes/rProfession"),
   rPriceList = require("./routes/rPriceList");
   rReferers = require("./routes/rReferers");
+  rDoctors = require("./routes/rDoctors");
 
 let cUser = require("./controllers/cUser"),
   cInitialization = require("./controllers/cInitialization");
@@ -59,6 +60,7 @@ if (process.env.NODE_ENV !== "production") app.use(logRequest);
 //Private Routes
 app.use("/api/user", rUser);
 app.use("/api/referer", rReferers);
+app.use("/api/doctor", rDoctors);
 app.use("/api/client", rClient);
 app.use("/api/employee", rEmployee);
 app.use("/api/role", rRole);

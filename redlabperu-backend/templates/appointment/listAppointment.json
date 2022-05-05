@@ -46,6 +46,10 @@
         "id": "{{#? this.Referer.id}}",
         "name": "{{#? this.Referer.refererName}}"
       },
+      "Doctor": {
+        "id": "{{#? this.Doctor.id}}",
+        "name": "{{#? this.Doctor.doctorName}}"
+      },
       "headquarter": {
         "id": "{{#? this.Headquarter.id}}",
         "name": "{{#? this.Headquarter.name}}",

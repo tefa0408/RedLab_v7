@@ -154,6 +154,7 @@ module.exports = (sequelize, DataTypes) => {
     Appointment.belongsTo(models.PriceList);
     Appointment.belongsTo(models.Headquarter);
     Appointment.belongsTo(models.Referers, {as: 'Referer'});
+    Appointment.belongsTo(models.Doctors, {as: 'Doctor'});
 
     Appointment.belongsToMany(models.Examination, {
       through: 'AppointmentDetail'

@@ -152,7 +152,15 @@ export const deleteServiceApi = (id) =>
 export const addRefererApi = (data) =>
   apiFetch(`referer/`, { method: "POST", body: data });
 
+  export const addDoctorApi = (data) =>
+  apiFetch(`doctor/`, { method: "POST", body: data });
+
+export const addAppointmentApi = (data) =>
+  apiFetch(`appointment/`, { method: "POST", body: data });
+
 export const getRefererApi = () => apiFetch(`referer/all`);
+
+export const getDoctorApi = () => apiFetch(`doctor/all`);
 
 
 
