@@ -213,7 +213,7 @@ class AppointmentTemplate extends React.Component {
                   >
                       <div>
                         <b>Medico: </b>
-                        {appointment.Referer.name}
+                        {appointment.Doctor.name}
                       </div>
 
                       <div>
