@@ -142,7 +142,7 @@ class Examination extends Component {
     this.setState({examValue: examValue});
     this.setState({examValueDialog: true});
 
-}
+  }
   openEditExamReferencesValue = (value) => {
     this.setState({examReferenceValue: value,examReferenceValueDialog: true})
   }
@@ -319,6 +319,7 @@ class Examination extends Component {
       //If examination is empty, it doesn't come from list, so get from API
       this.props.getExamination(examinationId);
     this.fetchExaminationValues(examinationId);
+    console.log(examination)
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -493,6 +494,7 @@ class Examination extends Component {
       editExamination,
       match: { params },
     } = this.props;
+    console.log(this.props)
     const { form, examGroups } = this.state;
 
     if (!form.groupName) {
@@ -503,7 +505,7 @@ class Examination extends Component {
       return;
     }
     const { examinationId } = params;
-
+    console.log(params)
     let d;
 
     if (examinationId !== "new") {
@@ -516,12 +518,14 @@ class Examination extends Component {
         { name: form.groupName },
         examinationId
       );
+      console.log(d)
     }
 
     const data = {
       id: d ? d.id : FuseUtils.generateGUID(),
       name: form.groupName,
     };
+    console.log(data)
     this.setState({
       form: {
         ...form,
@@ -529,6 +533,7 @@ class Examination extends Component {
       },
       examGroups: [...examGroups, data],
     });
+    console.log(this.state)
   };
 
   removeExamGroup = (item) => {
@@ -694,7 +699,9 @@ class Examination extends Component {
         },
         data,
         examinationId
+        
       );
+      console.log(data)
     }
 
     this.setState({
@@ -761,6 +768,8 @@ class Examination extends Component {
         form,
         examinationId
       );
+    console.log(examValues)
+    console.log(newReferenceValues)
   };
 
   handleChangeTableValues = (event, referenceValueId) => {
@@ -805,6 +814,8 @@ class Examination extends Component {
       units,
       newReferenceValues,
     } = this.state;
+    console.log(examValues)
+    console.log(newReferenceValues)
     const {
       params: { examinationId },
     } = this.props.match;
@@ -971,12 +982,13 @@ class Examination extends Component {
                               onClick={() => {
                                 this.addExamGroup();
                               }}
+                              
                               className="mt-8 mb-16 mr-8 ml-8"
                               color="primary"
                               fullWidth
                               variant="contained"
                             >
-                              Add
+                              Agregar
                             </Button>
                           </Grid>
                         </Grid>
@@ -1194,7 +1206,7 @@ class Examination extends Component {
                               fullWidth
                               variant="contained"
                             >
-                              Add
+                              Agregar
                             </Button>
                           </Grid>
                         </Grid>
@@ -1384,7 +1396,7 @@ class Examination extends Component {
                               fullWidth
                               variant="contained"
                             >
-                              Add
+                              Agregar
                             </Button>
                           </Grid>
                         </Grid>

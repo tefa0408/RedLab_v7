@@ -126,7 +126,9 @@ class Patient extends Component {
     var birthDate = new Date(event.target.value);
     var currentAge = currentDate.getFullYear() - birthDate.getFullYear();
     var m = currentDate.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && currentDate.getDate() < birthDate.getDate())) {
+    console.log('dia actual '+currentDate.getDate())
+    console.log('dia cumpleaños '+(birthDate.getDate()+1))
+    if (m < 0 || (m === 0 && currentDate.getDate() < (birthDate.getDate()+1))) {
       currentAge--;
     }
 

@@ -116,6 +116,7 @@ class ExaminationsTable extends Component {
   handleClickEdit = (examination) => {
     this.props.setExamination(examination);
     this.props.history.push("/apps/examinations/" + examination.id);
+    console.log(examination)
   };
 
   handleClickDelete = (examination) => {

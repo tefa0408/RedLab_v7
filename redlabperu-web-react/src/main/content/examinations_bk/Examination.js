@@ -467,7 +467,7 @@ class Examination extends Component {
                                         disabled={!this.canBeSubmitted()}
                                         onClick={() => this.submit()}
                                     >
-                                        Guardar
+                                        Guardar/*Incorrecto */
                                     </Button>
                                 </FuseAnimate>
                             </div>

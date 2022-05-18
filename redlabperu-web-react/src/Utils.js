@@ -19,7 +19,8 @@ export const renderImage = (imageUrl) => {
     // host:port/pathname
     // construst a new url and get the pathname to set a new url
     const url = new URL(`http://${imageUrl}`);
-    const imgURl = `${backendURL}:${backendPORT}${url.pathname}`;
+    //const imgURl = `${backendURL}:${backendPORT}${url.pathname}`;
+    const imgURl = `${url.pathname}`;
     console.log(imgURl);
     return imgURl;
   } catch (error) {

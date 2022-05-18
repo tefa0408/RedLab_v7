@@ -48,10 +48,12 @@ export function deleteExamination(examinationId) {
 }
 
 export function setExamination(examination) {
+  console.log(examination)
   return {
     type: GET_EXAMINATION,
     payload: prepareExaminationForEdit(examination),
   };
+  
 }
 
 export function getExamination(id) {
@@ -86,7 +88,9 @@ export function saveExamination(
   examGroups,
   examValues,
   referenceValues
-) {
+) 
+
+{
   return (dispatch) => {
     dispatch(fetch_start());
     const data = processDataforSave(
@@ -95,7 +99,8 @@ export function saveExamination(
       examValues,
       referenceValues
     );
-
+      console.log(data.examValue)
+      console.log(data)
     saveExaminationApi(data)
       .then(
         (response) => {
@@ -198,7 +203,6 @@ export function newExamination() {
     reportTime: "",
     examinationGroups: [],
   };
-
   return {
     type: GET_EXAMINATION,
     payload: data,
@@ -208,6 +212,7 @@ export function newExamination() {
 const prepareExaminationForEdit = (examination) => ({
   name: examination.name,
   indications: examination.indications,
+  ServiceId: examination.service.id,
   typeSample: examination.typeSample,
   volume: examination.volume,
   supplies: examination.supplies,
@@ -216,9 +221,7 @@ const prepareExaminationForEdit = (examination) => ({
   runFrequency: examination.runFrequency,
   processTime: examination.processTime,
   reportTime: examination.reportTime,
-  ServiceId: examination.service.id,
   examinationGroups: examination.examinationGroups,
-
   //     "AgreementId": examination.agreement.id
 });
 
@@ -248,9 +251,10 @@ const processDataforSave = (form, examGroups, examValues, referenceValues) => {
     examinationValues.forEach((examValue) => {
       const examRefs = referenceValues.filter(
         (refVal) =>
-          refVal.examValue.id == examValue.id &&
-          refVal.examGroup.id == examGroup.id
+        refVal.examGroup.id == examGroup.id &&
+        refVal.examValue.id == examValue.id
       );
+      console.log(examRefs)
       examinationValue.push({
         ...examValue,
         examinationReferences: examRefs.map((ref) => ({
@@ -281,7 +285,6 @@ const processDataforSave = (form, examGroups, examValues, referenceValues) => {
 
 const processDataforEdit = (form, examGroups, examValues, referenceValues) => {
   const examinationGroups = [];
-
   examGroups.forEach((examGroup) => {
     let examinationValue = [];
     const examinationValues = examValues.filter(
