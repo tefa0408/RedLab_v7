@@ -16,11 +16,11 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "admin",
-    "password": "redlab",
-    "database": "sl_redlab",
+    "username": "postgres",
+    "password": "tefa0408",
+    "database": "redlab_v5",
     "host": "localhost",
     "dialect": "postgres",
-    "logging": false
+    "port":5433
   }
 }
