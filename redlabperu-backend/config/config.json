@@ -1,11 +1,17 @@
 {
   "development": {
-    "username": "qdczjkhnsrynus",
+    "username": "ppmrgliuzdjdlm",
     "password": "f30541c44eb3c657a8e7a401eb88240335cd0763780245a4d85c5dbcf4dd1fc8",
-    "database": "d52ghk8hid8v6t",
-    "host": "ec2-3-231-82-226.compute-1.amazonaws.com",
+    "database": "d6danhucg3dtug",
+    "host": "ec2-54-204-56-171.compute-1.amazonaws.com",
     "dialect":"postgres",
-    "port":5432    
+    "port":5432,
+    "dialectOptions": {
+      "ssl": {
+        "require": true, 
+        "rejectUnauthorized": false 
+      }
+    }   
   },
   "c9development": {
     "username": "ubuntu",

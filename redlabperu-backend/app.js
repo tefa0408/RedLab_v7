@@ -35,7 +35,6 @@ let formidable = require("express-formidable");
 
 let express = require("express"),
   cors = require("cors");
-
 const { pathRootStaticFiles } = require("./config");
 
 let app = express();

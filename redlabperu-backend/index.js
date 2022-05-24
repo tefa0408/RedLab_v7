@@ -11,6 +11,7 @@ models.sequelize
 			console.log('Models has been synchronized');
 			app.listen(config.port, () => {
 				console.log(`API listening on ${config.url}:${config.port}`);
+				console.log(config.port+" "+config.portFront+" "+config.secret_key+" "+config.db+ " "+config.pathRootStaticFiles+ " "+ config.url)
 			});
 		});
 	})
