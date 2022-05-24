@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "ppmrgliuzdjdlm",
-    "password": "f30541c44eb3c657a8e7a401eb88240335cd0763780245a4d85c5dbcf4dd1fc8",
+    "password": "8d85096fdfb2c045d81dbf819431a9852fe3659ca2e01652f31f7e55600a1114",
     "database": "d6danhucg3dtug",
     "host": "ec2-54-204-56-171.compute-1.amazonaws.com",
     "dialect":"postgres",
@@ -21,11 +21,17 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": "tefa0408",
-    "database": "redlab_v5",
-    "host": "localhost",
-    "dialect": "postgres",
-    "port":5433
+    "username": "ppmrgliuzdjdlm",
+    "password": "8d85096fdfb2c045d81dbf819431a9852fe3659ca2e01652f31f7e55600a1114",
+    "database": "d6danhucg3dtug",
+    "host": "ec2-54-204-56-171.compute-1.amazonaws.com",
+    "dialect":"postgres",
+    "port":5432,
+    "dialectOptions": {
+      "ssl": {
+        "require": true, 
+        "rejectUnauthorized": false 
+      }
+    }
   }
 }
