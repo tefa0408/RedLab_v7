@@ -1,6 +1,6 @@
 module.exports = {
   port: process.env.PORT || 5000,
-  db: process.env.DB || "d6danhucg3dtug",
+  db: process.env.DB || "dcr9b841s6g3dp",
   url: process.env.URL || "localhost",
   urlFront: process.env.URL_FRONT || "localhost",
   portFront: process.env.PORT_FRONT || 3000,
