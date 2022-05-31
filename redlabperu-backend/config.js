@@ -1,6 +1,6 @@
 module.exports = {
   port: process.env.PORT || 5000,
-  db: process.env.DB || "redlab_v5",
+  db: process.env.DB || "d6danhucg3dtug",
   url: process.env.URL || "localhost",
   urlFront: process.env.URL_FRONT || "localhost",
   portFront: process.env.PORT_FRONT || 3000,

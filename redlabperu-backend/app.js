@@ -88,7 +88,7 @@ app.use("/api/profession", rProfession);
 app.get("/api/login", cUser.login);
 app.get("/api/initialization", cInitialization.initialization);
 
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).json({ status: true, message: "A legend was born today" });
 });
 
