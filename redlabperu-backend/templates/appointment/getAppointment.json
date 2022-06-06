@@ -13,6 +13,7 @@
     "discount": "{{#? appointment.discount}}",
     "finalPrice": "{{#? appointment.finalPrice}}",
     "refererCode": "{{#? appointment.refererCode}}",
+    "doctorNotes":"{{#? appointment.doctorNotes}}",
     "headquarters": "{{#? appointment.headquarters}}",
     "statusStr": "{{#? appointment.statusStr}}",
     "colorStatus": "{{#? appointment.colorStatus}}",

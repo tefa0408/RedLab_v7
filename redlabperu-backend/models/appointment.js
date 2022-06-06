@@ -82,6 +82,9 @@ module.exports = (sequelize, DataTypes) => {
     refererCode: {
       type: DataTypes.STRING(40)
     },
+    doctorNotes: {
+      type: DataTypes.STRING(200)
+    },
     finalPrice: {
       type: DataTypes.FLOAT,
       validate: {

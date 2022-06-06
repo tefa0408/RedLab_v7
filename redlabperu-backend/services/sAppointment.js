@@ -37,6 +37,10 @@ async function getAppointmentsByReferer(query) {
     where = {refererCode: query.refererCode, status: query.status};
   }
 
+  if(query.doctorNotes){
+    where = {doctorNotes: query.doctorNotes, status: query.status};
+  }
+
   if(query.refererId){
     where = {RefererId: query.refererId, status: query.status};
   }

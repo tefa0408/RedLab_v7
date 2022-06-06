@@ -135,12 +135,14 @@ class Appointment extends Component {
   componentDidMount() {
     const params = this.props.match.params;
     const { appointmentId, appointmentHandle } = params;
+    console.log(params)
 
     if (appointmentId === "new" && appointmentHandle !== "continue") {
       this.props.newAppointment();
+      
     } else if (appointmentHandle === "continue") {
       this.setState({ form: this.props.appointment });
-
+      
       if (this.props.appointment.PriceListId !== "") {
         this.fetchPriceLists(this.props.appointment.AgreementId);
       }
@@ -578,12 +580,16 @@ class Appointment extends Component {
       RefererId: form.RefererId,
       DoctorId: form.DoctorId,
       refererCode: form.refererCode,
+      doctorNotes:form.doctorNotes,
       examinations: examinations_ids,
       totalPrice,
       discount,
       finalPrice,
-      
     };
+    console.log(data)
+    console.log(data.refererCode)
+    console.log(data.doctorNotes)
+    console.log(data.DoctorId)
 
     if (appointmentId === "new") {
       this.props.saveAppointment(data);
@@ -658,6 +664,7 @@ class Appointment extends Component {
     const params = this.props.match.params;
     console.log(referer)
     console.log(doctor)
+    console.log(form)
 
     return (
       <div style={{ width: "100%" }}>
@@ -982,21 +989,20 @@ class Appointment extends Component {
                         {/*{@RSV01 add doctor and observations of doctor, you
                           have to change this part */}
                     <div style={{ display: "flex", justifyContent: "center" }}>
-                    <TextField
+                      <TextField
                         id="standard-select-currency"
                         className="mt-8 mb-16 mr-8 ml-8"
                         label="Observaciones del referente"
-                        name="refererCode"
-                        value={form.refererCode}
-                        error={form.refererCode === ""}
-                        
+                        name="doctorNotes"
+                        value={form.doctorNotes}
+                        error={form.doctorNotes === ""}
                         onChange={this.handleChange}
                         helperText="Por favor escriba una obs."
                         variant="outlined"
                         fullWidth
                         disabled={disabled}
                       />                       
-                    <TextField
+                      <TextField
                         id="standard-select-currency"
                         className="mt-8 mb-16 mr-8 ml-8"
                         select
@@ -1031,10 +1037,10 @@ class Appointment extends Component {
                             {option.doctorName}
                           </MenuItem>
                         ))}
-                      </TextField>
+                    </TextField>
 
                      
-                    </div>
+                  </div>
 {/*}@RSV01  */}
                   </div>
                 )}

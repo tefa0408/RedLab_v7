@@ -14,6 +14,7 @@
       "totalPrice": "{{#? this.totalPrice}}",
       "discount": "{{#? this.discount}}",
       "refererCode": "{{#? this.refererCode}}",
+      "doctorNotes": "{{#? this.doctorNotes}}",
       "finalPrice": "{{#? this.finalPrice}}",
       "headquarters": "{{#? this.headquarters}}",
       "status": "{{#? this.status}}",
