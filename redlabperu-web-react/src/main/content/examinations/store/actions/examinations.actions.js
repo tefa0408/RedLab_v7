@@ -29,7 +29,7 @@ export function getExaminations(start, end) {
 
 export function getExaminationsAll(userId) {
     // return (dispatch) =>{
-         dispatch(fetch_start())
+    //     dispatch(fetch_start())
     //     getExaminationsAllApi(userId).then(response => {
     //         console.log(response)
     //         if (response.status){
