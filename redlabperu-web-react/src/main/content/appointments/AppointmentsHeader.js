@@ -94,7 +94,10 @@ class AppointmentsHeader extends Component {
                                         startAdornment: <Icon color="primary">keyboard_arrow_down</Icon>
                                       }}
                                     >
-                                        <MenuItem value={"code"}>Codigo</MenuItem>
+                                        <MenuItem value={"nombre"}>Nombre</MenuItem>
+                                        <MenuItem value={"dni"}>DNI</MenuItem>
+                                        <MenuItem value={"referencia"}>Referencia</MenuItem>
+                                        <MenuItem value={"code"}>Codigo por Referencia</MenuItem>
                                         <MenuItem value={"date"}>Fecha</MenuItem>
                                         <MenuItem value={"dni"}>DNI</MenuItem>
                                         <MenuItem value={"passport"}>Pasaporte</MenuItem>
