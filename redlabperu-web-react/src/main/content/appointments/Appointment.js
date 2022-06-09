@@ -666,6 +666,13 @@ class Appointment extends Component {
     console.log(doctor)
     console.log(form)
 
+    // Requiring the module
+    const moment = require('moment');
+
+    const fecha = {
+      hoy: "20/06/2022"
+    };
+
     return (
       <div style={{ width: "100%" }}>
         <FusePageCarded
@@ -762,9 +769,13 @@ class Appointment extends Component {
                         disabled={!this.state.patientSearch}
                       >
                         <MenuItem value={"dni"}>DNI</MenuItem>
+                        <MenuItem value={"carnet"}>Carnet de Extranjería</MenuItem>
                         <MenuItem value={"passport"}>Pasaporte</MenuItem>
+                        <MenuItem value={"cedula"}>Cedula de Identidad</MenuItem>
+                        <MenuItem value={"carnetRefugio"}>Carnet de solicitante de refugio</MenuItem>
+                        <MenuItem value={"s/d"}>Sin Documento</MenuItem>
                         <MenuItem value={"name"}>Nombre y apellido</MenuItem>
-
+                        
                       </TextField>
 
                       {this.state.showPatientsButton && (
@@ -1128,9 +1139,9 @@ class Appointment extends Component {
                 )}
                 {tabValue === 2 && (
                   <div style={{ display: "flex", justifyContent: "center" }}>
+                    
                     <TextField
                       className="mt-8 mb-16 mr-8 ml-8"
-                      required
                       type="date"
                       label="Fecha"
                       name="dateAppointment"
@@ -1138,11 +1149,13 @@ class Appointment extends Component {
                       onChange={this.handleChange}
                       id="dateAppointment"
                       variant="outlined"
+                      defaultValue={fecha.hoy}
                       InputProps={{
                         readOnly: params.appointmentHandle === "show",
                       }}
                       InputLabelProps={{
                         shrink: true,
+                        required: true,
                       }}
                       fullWidth
                     />

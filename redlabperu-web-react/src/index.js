@@ -22,6 +22,7 @@ import jssExtend from 'jss-extend'
 import store from 'store';
 import {Auth} from 'auth';
 
+
 const jss = create({
     ...jssPreset(),
     plugins: [...jssPreset().plugins, jssExtend()]
