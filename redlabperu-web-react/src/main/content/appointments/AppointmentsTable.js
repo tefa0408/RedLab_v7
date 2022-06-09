@@ -380,15 +380,6 @@ class AppointmentsTable extends Component {
                     >
                       {n.code}
                     </TableCell>
-                    {/*<TableCell
-                      align="center"
-                      padding="dense"
-                      component="th"
-                      scope="row"
-                    >
-                      {n.refererCode}
-                    </TableCell>*/}
-
                     <TableCell
                       align="center"
                       padding="dense"
@@ -411,14 +402,9 @@ class AppointmentsTable extends Component {
                       component="th"
                       scope="row"
                     >
-                      <NumberFormat
-                        thousandSeparator="."
-                        decimalSeparator=","
-                        prefix="S/."
-                        value={n.finalPrice}
-                        displayType="text"
-                      />
+                      {n.refererCode}
                     </TableCell>
+                    
                     <TableCell
                       align="center"
                       padding="dense"
@@ -435,6 +421,20 @@ class AppointmentsTable extends Component {
                       scope="row"
                     >
                       {n.client.name} {n.client.lastNameP}
+                    </TableCell>
+                    <TableCell
+                      align="center"
+                      padding="dense"
+                      component="th"
+                      scope="row"
+                    >
+                      <NumberFormat
+                        thousandSeparator="."
+                        decimalSeparator=","
+                        prefix="S/."
+                        value={n.finalPrice}
+                        displayType="text"
+                      />
                     </TableCell>
                     <TableCell
                       align="center"

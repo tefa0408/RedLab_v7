@@ -16,13 +16,6 @@ const rows = [
         label         : 'Codigo',
         sort          : true
     },
-    /*{
-        id            : 'refererCode',
-        numeric       : false,
-        disablePadding: false,
-        label         : 'Código Ref.',
-        sort          : true
-    },*/
     {
         id            : 'dateAppointment',
         numeric       : false,
@@ -38,10 +31,10 @@ const rows = [
         sort          : true
     },
     {
-        id            : 'finalPrice',
+        id            : 'refererCode',
         numeric       : false,
         disablePadding: false,
-        label         : 'Precio final',
+        label         : 'Código Ref.',
         sort          : true
     },
     {
@@ -56,6 +49,13 @@ const rows = [
         numeric       : false,
         disablePadding: false,
         label         : 'Paciente',
+        sort          : true
+    },
+    {
+        id            : 'finalPrice',
+        numeric       : false,
+        disablePadding: false,
+        label         : 'Precio final',
         sort          : true
     },
     {
